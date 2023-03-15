@@ -1,14 +1,28 @@
 <p style="color: green"><%= notice %></p>
-
 <h1>Contents</h1>
-
-<div id="contents">
-  <% @contents.each do |content| %>
-    <%= render content %>
-    <p>
-      <%= link_to "Show this content", content %>
-    </p>
-  <% end %>
-</div>
-
+<table>
+  <thead>
+    <tr>
+      <th>Titolo</th>
+      <th>Descrizione</th>
+      <th>Utente</th>
+      <th>Prezzo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contents.each do |content| %>
+      <tr>
+        <td><%= content.titolo %></td>
+        <td><%= content.descrizione %></td>
+        <td><%= content.user.name if content.user %></td>
+        <td><%= content.price %></td>
+        <td><%= link_to 'Mostra', content_path(content) %></td>
+        <%if content.user == current_user %>
+          <td><%= link_to 'Edit', edit_content_path(content) %></td>
+          <td><%= link_to 'Destroy', content_path(content), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= link_to "New content", new_content_path %>
