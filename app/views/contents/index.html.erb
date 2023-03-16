@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Immagine</th>
       <th>Titolo</th>
       <th>Descrizione</th>
       <th>Utente</th>
@@ -12,6 +13,9 @@
   <tbody>
     <% @contents.each do |content| %>
       <tr>
+        <td> <% if content.image.attached? %>
+            <%= image_tag content.image, class: "thumbnail" %>
+          <% end %></td>
         <td><%= content.titolo %></td>
         <td><%= content.descrizione %></td>
         <td><%= content.user.name if content.user %></td>

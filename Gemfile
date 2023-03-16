@@ -33,6 +33,9 @@ gem 'materialize-sass', '~> 1.0.0'
 
 gem 'devise'
 
+gem 'activestorage'
+
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

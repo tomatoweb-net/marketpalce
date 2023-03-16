@@ -3,6 +3,7 @@ class ContentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :check_user, only: [:edit, :update, :destroy]
 
+
   # GET /contents or /contents.json
   def index
     @contents = Content.all
@@ -67,7 +68,7 @@ class ContentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def content_params
-      params.require(:content).permit(:titolo, :descrizione, :price)
+      params.require(:content).permit(:titolo, :descrizione, :price, :image)
     end
 
     def check_user
